@@ -1,0 +1,43 @@
+﻿
+<html ng-app="countryApp">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<body ng-controller="ProductController">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+		<script>
+		function getProductList($id) {
+			var countryApp = angular.module('countryApp', []);
+			countryApp.controller('ProductController', function ($scope, $http) {
+				$http.get('http://localhost:24438/api/Product/' + $id).success(function (data) {
+					$scope.result = data;
+
+				});
+			});
+		}
+		</script>
+
+		</header>
+		
+		<table border="1" table cellpadding="2" cellspacing="2">
+			<tr>
+				<th>Название продукта</th>
+				<th>Описание</th>
+			</tr>
+			@foreach (var item in (List<MyTask.Models.Entities.Product>)@Model)
+			{
+				<tr>
+					<td>
+						@item.ProductName;
+					</td>
+					<td>
+						@item.ProductAbout;
+					</td>
+				</tr>
+			}
+		</table>
+	</body>
+</html>
+
+
