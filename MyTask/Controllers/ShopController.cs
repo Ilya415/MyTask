@@ -10,7 +10,7 @@ namespace MyTask.Controllers
 {
     public class ShopController : Controller
     {
-        UnitOfWork unitOfWork = new UnitOfWork();
+       private UnitOfWork unitOfWork = new UnitOfWork();
         // GET: Shops
         public ActionResult Index()
         {
